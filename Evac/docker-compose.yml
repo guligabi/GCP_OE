@@ -1,0 +1,19 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV="development"
+      - MONGO_DB_CONNECTION_STRING="mongodb+srv://Guligabi:<REDACTED>@odenseemergencycluster.bfcpbx6.mongodb.net/test"
+      - MONGO_DB_NAME="OdenseEmergencyCluster"
+      - REDIS_URI="rediss://default:<REDACTED>@redis-3355e3ea-gulacsi-a633.aivencloud.com:27746"
+      
